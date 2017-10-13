@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+    </parent>
+
+    <groupId>com.example.camunda.lib</groupId>
+    <artifactId>camunda-lib</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <camunda.spring.boot.version>2.2.0</camunda.spring.boot.version>
+        <camunda.engine.version>7.7.0</camunda.engine.version>
+        <project.build.java>1.8</project.build.java>
+    </properties>
+
+    <modules>
+        <module>camunda-lib-workflow</module>
+        <module>camunda-lib-service</module>
+    </modules>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- Modules -->
+            <dependency>
+                <groupId>com.example.camunda.lib</groupId>
+                <artifactId>lib-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.example.camunda.lib</groupId>
+                <artifactId>lib-workflow</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--workflow-->
+            <dependency>
+                <groupId>org.camunda.bpm.extension.springboot</groupId>
+                <artifactId>camunda-bpm-spring-boot-starter</artifactId>
+                <version>${camunda.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.camunda.bpm.extension.springboot</groupId>
+                <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+                <version>${camunda.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.camunda.bpm.extension.springboot</groupId>
+                <artifactId>camunda-bpm-spring-boot-starter-test</artifactId>
+                <version>${camunda.spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.camunda.bpm</groupId>
+                <artifactId>camunda-engine</artifactId>
+                <version>${camunda.engine.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${project.build.java}</source>
+                    <target>${project.build.java}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
