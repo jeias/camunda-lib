@@ -38,6 +38,12 @@
             <groupId>com.example.camunda.lib</groupId>
             <artifactId>lib-service</artifactId>
         </dependency>
+
+        <!-- Twitter -->
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
